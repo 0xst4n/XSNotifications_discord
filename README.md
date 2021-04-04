@@ -2,6 +2,8 @@
 
 Display discord DM and mention notifications using XSOverlay Notification API with [XSONotifications_py](https://github.com/StandB/XSNotifications_py) and a discord.py selfbot to read all messages (for now)
 
+`Automating user accounts is technically against TOS, use at your own risk!`
+
 ## Using
 The user token is set with an ENV variable
 

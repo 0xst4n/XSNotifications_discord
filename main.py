@@ -28,19 +28,22 @@ async def on_message(message):
         msg.messageType = 1
         msg.sourceApp = "Discord"
         msg.opacity = 0.7
-        msg.title = str(message.author) + " - " + msg_type
         msg.audioPath = ""
         msg.content = ""
         msg.useBase64Icon = True
 
+        msg.title = str(message.author)
+
         if message.channel.type == discord.ChannelType.private:
             msg_type = "DM"
+            msg.title += f"<space=1em><size=80%> {msg_type}"
         else:
             msg_type = message.guild.name
-            # msg.content = message.channel.name + r"\u2028"
+            msg.title += f"<space=1em><size=80%> {msg_type} - {message.channel.name}"
 
         msg.content += message.clean_content
-
+        
+        ava_url = str(message.author.avatar_url)
         ava_url = ava_url.rsplit(".", 1)[0] + ".jpg"
         icon = base64.b64encode(requests.get(ava_url).content)
         msg.icon = icon.decode('utf-8')

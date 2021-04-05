@@ -5,13 +5,19 @@ Display discord DM and mention notifications using XSOverlay Notification API wi
 `Automating user accounts is technically against TOS, use at your own risk!`
 
 ## Using
-The user token is set with an ENV variable
+Download & launch xsnoti_discord.exe from the [Releases](https://github.com/StandB/XSNotifications_discord) page. (Store it somewhere safe)
 
-use `set TOKEN=token_here` (without any quotes around the token)
+It asks for a token on first launch, fill this in and it will remember.
+
+Don't seperate token.txt and the exe file. If you type it wrong, change it manually in the txt file.
+
+
+
+Or use python to run and type:
 
 `python main.py`
 
 with XSOverlay running on the latest version
 
 ### Notes
-Heavy WIP :)
+WIP

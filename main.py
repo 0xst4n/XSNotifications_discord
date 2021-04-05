@@ -5,13 +5,24 @@ import datetime
 import base64
 import requests
 import os
+from pathlib import Path
 from XSONotifications import XSOMessage, XSNotifier
 
 # Intializes bot and it's options.
-token = os.environ.get("TOKEN")
-if token == None:
-    print("token not set!\nuse: set TOKEN=insert_token_here\nwithout quotes!")
-    exit()
+token = ''
+def config():
+    global token
+    f_temp = Path('token.txt')
+    f_temp.touch(exist_ok=True)  # will create file, if it exists will do nothing
+    f = open("token.txt", "r+")
+    token = f.readline()
+    if token == None or token == '':
+        token = input("Enter token: ")
+        f.write(token)
+        f.close()
+
+config()
+
 prefix = '*'
 bot = commands.Bot(command_prefix=prefix, case_insensitive=True, self_bot=True)
 
@@ -50,10 +61,4 @@ async def on_message(message):
         
         XSNotifier.send_notification(msg)
 
-    
 bot.run(token, bot=False)
-
-
-
-
-
